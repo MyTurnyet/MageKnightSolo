@@ -14,32 +14,11 @@ namespace Solo.Models
         {
             _currentDeck = currentDeck;
         }
+        public int CardCount() => _currentDeck.Length;
+        public IDeck Shuffle() => new DummyDeck(_currentDeck.OrderBy(card=> new Random().Next()).ToArray());
 
-        public int CardCount()
-        {
-            return _currentDeck.Length;
-        }
-
-        public IDeck Shuffle()
-        {
-            Random rnd = new Random();
-            return new DummyDeck(_currentDeck.OrderBy(card=> rnd.Next()).ToArray());
-        }
-
-
-        public override bool Equals(object obj)
-        {
-            return obj is DummyDeck deck && Equals(deck);
-        }
-
-        private bool Equals(DummyDeck other)
-        {
-            return _currentDeck.SequenceEqual(other._currentDeck);
-        }
-
-        public override int GetHashCode()
-        {
-            return (_currentDeck != null ? _currentDeck.GetHashCode() : 0);
-        }
+        public override bool Equals(object obj) => obj is DummyDeck deck && Equals(deck);
+        private bool Equals(DummyDeck other) => _currentDeck.SequenceEqual(other._currentDeck);
+        public override int GetHashCode() => (_currentDeck != null ? _currentDeck.GetHashCode() : 0);
     }
 }
