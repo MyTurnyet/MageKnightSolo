@@ -9,14 +9,14 @@ namespace SoloTests.Models
     public class DummyDeckTests
     {
         [TestMethod, TestCategory("Unit")]
-        public void ShouldHave_0_Cards()
+        public void ShouldHave_16_Cards_In_DefaultDeck()
         {
             //assign
             IDeck deck = new DummyDeck();
             //act
             int cardCount = deck.CardCount();
             //assert
-            cardCount.Should().Be(0);
+            cardCount.Should().Be(16);
         }
         [TestMethod, TestCategory("Unit")]
         public void ShouldHave_2_Cards()
@@ -50,6 +50,27 @@ namespace SoloTests.Models
             DummyDeck deck2 = new DummyDeck(otherDeck);
             //assert
             deck1.Should().NotBe(deck2);
+        }
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldEquate_WhitDefaultStartingDeck()
+        {
+            //assign
+            string[] startingDeck = {"r","r","r","r","g","g","g","g","b","b","b","b","w","w","w","w"};
+            DummyDeck deck1 = new DummyDeck(startingDeck);
+            DummyDeck deck2 = new DummyDeck();
+            //assert
+            deck1.Should().Be(deck2);
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldShuffle()
+        {
+            //assign
+            IDeck dummyDeck = new DummyDeck();
+            //act
+            IDeck shuffledDeck = dummyDeck.Shuffle();
+            //assert
+            dummyDeck.Should().NotBe(shuffledDeck);
         }
     }
 }
