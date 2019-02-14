@@ -4,5 +4,6 @@ namespace Solo.Interfaces
     {
         int CardCount();
         IDeck Shuffle();
+        string[] Draw();
     }
 }

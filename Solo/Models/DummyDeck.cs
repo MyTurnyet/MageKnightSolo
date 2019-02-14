@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Solo.Interfaces;
 
@@ -7,6 +8,7 @@ namespace Solo.Models
     public class DummyDeck : IDeck
     {
         private readonly string[] _currentDeck;
+        private string[]  _drawDeck;
 
         public DummyDeck() : this(
             new[] {"r", "r", "r", "r", "g", "g", "g", "g", "b", "b", "b", "b", "w", "w", "w", "w"})
@@ -16,6 +18,7 @@ namespace Solo.Models
         public DummyDeck(string[] currentDeck)
         {
             _currentDeck = currentDeck;
+            _drawDeck = currentDeck;
         }
 
         public int CardCount() => _currentDeck.Length;
@@ -30,5 +33,11 @@ namespace Solo.Models
             return new DummyDeck(_currentDeck.OrderBy(card => random.Next()).ToArray());
         }
 
+        public string[] Draw()
+        {
+            string[] drawnCards = _drawDeck.Take(3).ToArray();
+            _drawDeck = _drawDeck.Skip(3).ToArray();
+            return drawnCards;
+        }
     }
 }

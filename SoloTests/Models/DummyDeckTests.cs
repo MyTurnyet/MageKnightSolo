@@ -72,5 +72,40 @@ namespace SoloTests.Models
             //assert
             dummyDeck.Should().NotBe(shuffledDeck);
         }
+
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldDraw_3Cards()
+        {
+            //assign
+            string[] startingDeck = {"r","r","g","b"};
+            IDeck currentDeck = new DummyDeck(startingDeck);
+            //act
+            string[] drawnCards = currentDeck.Draw();
+            //assert
+            drawnCards.Should().BeEquivalentTo("r", "r", "g");
+        }
+        
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldDraw_3OtherCards()
+        {
+            //assign
+            string[] startingDeck = {"r","g","b","b"};
+            IDeck currentDeck = new DummyDeck(startingDeck);
+            //act
+            string[] drawnCards = currentDeck.Draw();
+            //assert
+            drawnCards.Should().BeEquivalentTo("r", "g", "b");
+        }
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldDraw_Cards_WhenLessThanThreeLeft()
+        {
+            //assign
+            string[] startingDeck = {"r","g"};
+            IDeck currentDeck = new DummyDeck(startingDeck);
+            //act
+            string[] drawnCards = currentDeck.Draw();
+            //assert
+            drawnCards.Should().BeEquivalentTo("r", "g");
+        }
     }
 }
