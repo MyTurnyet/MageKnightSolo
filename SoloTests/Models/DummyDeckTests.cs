@@ -30,5 +30,26 @@ namespace SoloTests.Models
             cardCount.Should().Be(3);
         }
         
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldEquate()
+        {
+            //assign
+            string[] startingDeck = {"r","r","r","r","g","g","g","g","b","b","b","b","w","w","w","w"};
+            DummyDeck deck1 = new DummyDeck(startingDeck);
+            DummyDeck deck2 = new DummyDeck(startingDeck);
+            //assert
+            deck1.Should().Be(deck2);
+        }
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldNotEquate()
+        {
+            //assign
+            string[] startingDeck = {"r","r","r","r","g","g","g","g","b","b","b","b","w","w","w","w"};
+            string[] otherDeck = {"b","r","r","r","g","g","g","g","r","b","b","b","w","w","w","w"};
+            DummyDeck deck1 = new DummyDeck(startingDeck);
+            DummyDeck deck2 = new DummyDeck(otherDeck);
+            //assert
+            deck1.Should().NotBe(deck2);
+        }
     }
 }

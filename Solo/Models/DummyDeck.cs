@@ -17,5 +17,25 @@ namespace Solo.Models
         {
             return _startingDeck.Length;
         }
+
+//        public IDeck Shuffle()
+//        {
+//            throw new System.NotImplementedException();
+//        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is DummyDeck && Equals((DummyDeck) obj);
+        }
+
+        private bool Equals(DummyDeck other)
+        {
+            return Equals(_startingDeck, other._startingDeck);
+        }
+
+        public override int GetHashCode()
+        {
+            return (_startingDeck != null ? _startingDeck.GetHashCode() : 0);
+        }
     }
 }
