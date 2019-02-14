@@ -18,10 +18,6 @@ namespace Solo.Models
             return _startingDeck.Length;
         }
 
-//        public IDeck Shuffle()
-//        {
-//            throw new System.NotImplementedException();
-//        }
 
         public override bool Equals(object obj)
         {
