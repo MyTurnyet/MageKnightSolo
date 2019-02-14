@@ -1,6 +1,6 @@
 namespace Solo.Interfaces
 {
-    public interface IDummyDeck
+    public interface IDeck
     {
         int CardCount();
     }

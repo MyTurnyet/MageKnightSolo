@@ -12,9 +12,9 @@ namespace SoloTests.Models
         public void ShouldHave_0_Cards()
         {
             //assign
-            IDummyDeck dummyDeck = new DummyDeck();
+            IDeck deck = new DummyDeck();
             //act
-            int cardCount = dummyDeck.CardCount();
+            int cardCount = deck.CardCount();
             //assert
             cardCount.Should().Be(0);
         }
@@ -23,9 +23,9 @@ namespace SoloTests.Models
         {
             //assign
             string[] startingDeck = {"r","g","b"};
-            IDummyDeck dummyDeck = new DummyDeck(startingDeck);
+            IDeck deck = new DummyDeck(startingDeck);
             //act
-            int cardCount = dummyDeck.CardCount();
+            int cardCount = deck.CardCount();
             //assert
             cardCount.Should().Be(3);
         }

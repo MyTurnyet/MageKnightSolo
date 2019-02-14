@@ -2,7 +2,7 @@ using Solo.Interfaces;
 
 namespace Solo.Models
 {
-    public class DummyDeck : IDummyDeck
+    public class DummyDeck : IDeck
     {
         private readonly string[] _startingDeck;
 

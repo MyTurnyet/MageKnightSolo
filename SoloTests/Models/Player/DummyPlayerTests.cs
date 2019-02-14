@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Solo.Interfaces;
+using Solo.Models;
 using Solo.Models.Player;
 
 namespace SoloTests.Models.Player
@@ -12,8 +13,10 @@ namespace SoloTests.Models.Player
         public void ShouldHaveStartingDeck_Of2()
         {
             //assign
-            string[] startingDeck = {"r","g"};
-            IDummyPlayer dummyPlayer = new DummyPlayer(startingDeck);
+            string[] startingCards = {"r","g"};
+            IDeck startingDummyDeck = new DummyDeck(startingCards);
+
+            IDummyPlayer dummyPlayer = new DummyPlayer(startingDummyDeck);
             //act
             int startingCardCount = dummyPlayer.CardCount();
             //assert
@@ -24,8 +27,9 @@ namespace SoloTests.Models.Player
         public void ShouldHaveStartingDeck_Of3()
         {
             //assign
-            string[] startingDeck = {"r","g","b"};
-            IDummyPlayer dummyPlayer = new DummyPlayer(startingDeck);
+            string[] startingCards = {"r","g","b"};
+            IDeck startingDummyDeck = new DummyDeck(startingCards);
+            IDummyPlayer dummyPlayer = new DummyPlayer(startingDummyDeck);
             //act
             int startingCardCount = dummyPlayer.CardCount();
             //assert
@@ -37,8 +41,8 @@ namespace SoloTests.Models.Player
         {
             //assign
             string[] startingCrystals = {"g"};
-            string[] startingDeck = {"r"};
-            IDummyPlayer dummyPlayer = new DummyPlayer(startingDeck, startingCrystals);
+            IDeck startingDummyDeck = new DummyDeck();
+            IDummyPlayer dummyPlayer = new DummyPlayer(startingDummyDeck, startingCrystals);
             //act
             int startingCrystalCount = dummyPlayer.CrystalCount();
             //assert
@@ -49,8 +53,9 @@ namespace SoloTests.Models.Player
         {
             //assign
             string[] startingCrystals = {"g","b","r"};
-            string[] startingDeck = {"r","b","g"};
-            IDummyPlayer dummyPlayer = new DummyPlayer(startingDeck, startingCrystals);
+            IDeck startingDummyDeck = new DummyDeck();
+
+            IDummyPlayer dummyPlayer = new DummyPlayer(startingDummyDeck, startingCrystals);
             //act
             int startingCrystalCount = dummyPlayer.CrystalCount();
             //assert

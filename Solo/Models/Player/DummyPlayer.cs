@@ -4,20 +4,20 @@ namespace Solo.Models.Player
 {
     public class DummyPlayer : IDummyPlayer
     {
+        private readonly IDeck _startingDummyDeck;
         private readonly string[] _startingCrystals;
-        private readonly string[] _startingDeck;
 
-        public DummyPlayer(string[] startingDeck):this(startingDeck, new string[]{}){}
+        public DummyPlayer(IDeck startingDummyDeck):this(startingDummyDeck, new string[]{}){}
 
-        public DummyPlayer(string[] startingDeck, string[] startingCrystals)
+        public DummyPlayer(IDeck startingDummyDeck, string[] startingCrystals)
         {
-            _startingDeck = startingDeck;
+            _startingDummyDeck = startingDummyDeck;
             _startingCrystals = startingCrystals;
         }
 
         public int CardCount()
         {
-            return _startingDeck.Length;
+            return _startingDummyDeck.CardCount();
         }
 
         public int CrystalCount()
