@@ -2,41 +2,54 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Solo.Interfaces;
+using Solo.Models.Cards;
 
 namespace Solo.Models
 {
     public class DummyDeck : IDeck
     {
-        private readonly string[] _currentDeck;
-        private string[]  _drawDeck;
+        private readonly CardList _currentDeck;
+        private CardList _drawDeck;
 
-        public DummyDeck() : this(
-            new[] {"r", "r", "r", "r", "g", "g", "g", "g", "b", "b", "b", "b", "w", "w", "w", "w"})
+        public DummyDeck() : this(new CardList(new List<ICard>
+        {
+            new WhiteCard(), new RedCard(), new GreenCard(), new BlueCard(),
+            new WhiteCard(), new RedCard(), new GreenCard(), new BlueCard(),
+            new WhiteCard(), new RedCard(), new GreenCard(), new BlueCard(),
+            new WhiteCard(), new RedCard(), new GreenCard(), new BlueCard()
+        }))
         {
         }
 
-        public DummyDeck(string[] currentDeck)
+        public DummyDeck(CardList currentDeck)
         {
             _currentDeck = currentDeck;
             _drawDeck = currentDeck;
         }
 
-        public int CardCount() => _currentDeck.Length;
+        public int CardCount() => _currentDeck.Count();
 
         public override bool Equals(object obj) => obj is DummyDeck deck && Equals(deck);
-        private bool Equals(DummyDeck other) => _currentDeck.SequenceEqual(other._currentDeck);
+
+        private bool Equals(DummyDeck other)
+        {
+            bool sequenceEqual = _currentDeck.SequenceEqual(other._currentDeck);
+            return sequenceEqual;
+        }
+
         public override int GetHashCode() => (_currentDeck != null ? _currentDeck.GetHashCode() : 0);
 
         public IDeck Shuffle()
         {
             Random random = new Random();
-            return new DummyDeck(_currentDeck.OrderBy(card => random.Next()).ToArray());
+            List<ICard> shuffledCards = _currentDeck.OrderBy(card => random.Next()).ToList();
+            return new DummyDeck(new CardList(shuffledCards));
         }
 
-        public string[] Draw()
+        public List<ICard> Draw(int drawNumber)
         {
-            string[] drawnCards = _drawDeck.Take(3).ToArray();
-            _drawDeck = _drawDeck.Skip(3).ToArray();
+            List<ICard> drawnCards = _drawDeck.Take(drawNumber).ToList();
+            _drawDeck = new CardList( _drawDeck.Skip(drawNumber).ToList());
             return drawnCards;
         }
     }

@@ -10,33 +10,6 @@ namespace SoloTests.Models.Player
     public class DummyPlayerTests    
     {
         [TestMethod, TestCategory("Unit")]
-        public void ShouldHaveStartingDeck_Of2()
-        {
-            //assign
-            string[] startingCards = {"r","g"};
-            IDeck startingDummyDeck = new DummyDeck(startingCards);
-
-            IDummyPlayer dummyPlayer = new DummyPlayer(startingDummyDeck);
-            //act
-            int startingCardCount = dummyPlayer.CardCount();
-            //assert
-            startingCardCount.Should().Be(2);
-        }
-
-        [TestMethod, TestCategory("Unit")]
-        public void ShouldHaveStartingDeck_Of3()
-        {
-            //assign
-            string[] startingCards = {"r","g","b"};
-            IDeck startingDummyDeck = new DummyDeck(startingCards);
-            IDummyPlayer dummyPlayer = new DummyPlayer(startingDummyDeck);
-            //act
-            int startingCardCount = dummyPlayer.CardCount();
-            //assert
-            startingCardCount.Should().Be(3);
-        }
-
-        [TestMethod, TestCategory("Unit")]
         public void ShouldHave_1_StartingCrystal()
         {
             //assign
