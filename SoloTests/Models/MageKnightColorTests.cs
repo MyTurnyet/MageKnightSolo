@@ -2,23 +2,10 @@ using System.Runtime.InteropServices;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Solo.Interfaces;
-using Solo.Models;
 using Solo.Models.Colors;
 
 namespace SoloTests.Models
 {
-    public class MageKnightColorWhite : MageKnightColor, IColor
-    {
-        public MageKnightColorWhite() : base("White")
-        {
-        }
-
-        public bool Matches(IColor color)
-        {
-            return color is MageKnightColorWhite;
-        }
-    }
-
     [TestClass]
     public class MageKnightColorTests
     {
