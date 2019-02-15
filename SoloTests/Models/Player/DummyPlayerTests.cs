@@ -61,6 +61,5 @@ namespace SoloTests.Models.Player
             //assert
             startingCrystalCount.Should().Be(3);
         }
-        
     }
 }

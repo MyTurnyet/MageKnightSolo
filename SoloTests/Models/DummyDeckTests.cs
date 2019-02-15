@@ -84,7 +84,7 @@ namespace SoloTests.Models
             //assert
             drawnCards.Should().BeEquivalentTo("r", "r", "g");
         }
-        
+
         [TestMethod, TestCategory("Unit")]
         public void ShouldDraw_3OtherCards()
         {
@@ -96,6 +96,7 @@ namespace SoloTests.Models
             //assert
             drawnCards.Should().BeEquivalentTo("r", "g", "b");
         }
+
         [TestMethod, TestCategory("Unit")]
         public void ShouldDraw_Cards_WhenLessThanThreeLeft()
         {
@@ -107,5 +108,6 @@ namespace SoloTests.Models
             //assert
             drawnCards.Should().BeEquivalentTo("r", "g");
         }
+
     }
 }
