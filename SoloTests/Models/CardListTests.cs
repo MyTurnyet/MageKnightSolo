@@ -43,5 +43,20 @@ namespace SoloTests.Models
             //assert
             count.Should().Be(1);
         }
+
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldEquate()
+        {
+            //assign
+            List<ICard> cards = new List<ICard> {new BlueCard()};
+            List<ICard> cards2 = new List<ICard> {new BlueCard()};
+            ICardList list = new CardList(cards);
+            ICardList list2 = new CardList(cards2);
+            
+            //act
+            //assert
+            list.Should().Be(list2);
+
+        }
     }
 }

@@ -31,11 +31,7 @@ namespace Solo.Models
 
         public override bool Equals(object obj) => obj is DummyDeck deck && Equals(deck);
 
-        private bool Equals(DummyDeck other)
-        {
-            bool sequenceEqual = _currentDeck.SequenceEqual(other._currentDeck);
-            return sequenceEqual;
-        }
+        private bool Equals(DummyDeck other) => other._currentDeck.Equals(_currentDeck);
 
         public override int GetHashCode() => (_currentDeck != null ? _currentDeck.GetHashCode() : 0);
 
@@ -49,7 +45,7 @@ namespace Solo.Models
         public List<ICard> Draw(int drawNumber)
         {
             List<ICard> drawnCards = _drawDeck.Take(drawNumber).ToList();
-            _drawDeck = new CardList( _drawDeck.Skip(drawNumber).ToList());
+            _drawDeck = new CardList(_drawDeck.Skip(drawNumber).ToList());
             return drawnCards;
         }
     }
