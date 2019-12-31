@@ -7,14 +7,14 @@ using Solo.Models.Colors;
 namespace SoloTests.Models
 {
     [TestClass]
-    public class MageKnightColorTests
+    public class ColorTests
     {
         [TestMethod, TestCategory("Unit")]
         public void ShouldMatch_Blue_Blue()
         {
             //assign
-            IColor blueColor2 = new MageKnightColorBlue();
-            IColor blueColor1 = new MageKnightColorBlue();
+            IColor blueColor2 = new ColorBlue();
+            IColor blueColor1 = new ColorBlue();
             //act
             bool matches = blueColor1.Matches(blueColor2);
             //assert
@@ -25,8 +25,8 @@ namespace SoloTests.Models
         public void ShouldMatch_Green_Green()
         {
             //assign
-            IColor blueColor2 = new MageKnightColorGreen();
-            IColor blueColor1 = new MageKnightColorGreen();
+            IColor blueColor2 = new ColorGreen();
+            IColor blueColor1 = new ColorGreen();
             //act
             bool matches = blueColor1.Matches(blueColor2);
             //assert
@@ -37,8 +37,8 @@ namespace SoloTests.Models
         public void ShouldMatch_Red_Red()
         {
             //assign
-            IColor redColor1 = new MageKnightColorRed();
-            IColor redColor2 = new MageKnightColorRed();
+            IColor redColor1 = new ColorRed();
+            IColor redColor2 = new ColorRed();
             //act
             bool matches = redColor1.Matches(redColor2);
             //assert
@@ -49,8 +49,8 @@ namespace SoloTests.Models
         public void ShouldMatch_White_White()
         {
             //assign
-            IColor color1 = new MageKnightColorWhite();
-            IColor color2 = new MageKnightColorWhite();
+            IColor color1 = new ColorWhite();
+            IColor color2 = new ColorWhite();
             //act
             bool matches = color1.Matches(color2);
             //assert
@@ -61,8 +61,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Blue_Green()
         {
             //assign
-            IColor blue = new MageKnightColorBlue();
-            IColor green = new MageKnightColorGreen();
+            IColor blue = new ColorBlue();
+            IColor green = new ColorGreen();
             //act
             bool matches = blue.Matches(green);
             //assert
@@ -73,8 +73,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Blue_Red()
         {
             //assign
-            IColor redColor = new MageKnightColorRed();
-            IColor blueColor = new MageKnightColorBlue();
+            IColor redColor = new ColorRed();
+            IColor blueColor = new ColorBlue();
             //act
             bool matches = blueColor.Matches(redColor);
             //assert
@@ -85,8 +85,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Blue_White()
         {
             //assign
-            IColor white = new MageKnightColorWhite();
-            IColor blueColor = new MageKnightColorBlue();
+            IColor white = new ColorWhite();
+            IColor blueColor = new ColorBlue();
             //act
             bool matches = blueColor.Matches(white);
             //assert
@@ -97,8 +97,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Green_Blue()
         {
             //assign
-            IColor blue = new MageKnightColorBlue();
-            IColor green = new MageKnightColorGreen();
+            IColor blue = new ColorBlue();
+            IColor green = new ColorGreen();
             //act
             bool matches = green.Matches(blue);
             //assert
@@ -109,8 +109,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Green_Red()
         {
             //assign
-            IColor redColor = new MageKnightColorRed();
-            IColor green = new MageKnightColorGreen();
+            IColor redColor = new ColorRed();
+            IColor green = new ColorGreen();
             //act
             bool matches = green.Matches(redColor);
             //assert
@@ -120,8 +120,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Green_White()
         {
             //assign
-            IColor white = new MageKnightColorWhite();
-            IColor green = new MageKnightColorGreen();
+            IColor white = new ColorWhite();
+            IColor green = new ColorGreen();
             //act
             bool matches = green.Matches(white);
             //assert
@@ -132,8 +132,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Red_Blue()
         {
             //assign
-            IColor redColor = new MageKnightColorRed();
-            IColor blueColor = new MageKnightColorBlue();
+            IColor redColor = new ColorRed();
+            IColor blueColor = new ColorBlue();
             //act
             bool matches = redColor.Matches(blueColor);
             //assert
@@ -144,8 +144,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Red_Green()
         {
             //assign
-            IColor redColor = new MageKnightColorRed();
-            IColor green = new MageKnightColorGreen();
+            IColor redColor = new ColorRed();
+            IColor green = new ColorGreen();
             //act
             bool matches = redColor.Matches(green);
             //assert
@@ -155,8 +155,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_Red_White()
         {
             //assign
-            IColor redColor = new MageKnightColorRed();
-            IColor white = new MageKnightColorWhite();
+            IColor redColor = new ColorRed();
+            IColor white = new ColorWhite();
             //act
             bool matches = redColor.Matches(white);
             //assert
@@ -166,8 +166,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_White_Blue()
         {
             //assign
-            IColor white = new MageKnightColorWhite();
-            IColor blueColor = new MageKnightColorBlue();
+            IColor white = new ColorWhite();
+            IColor blueColor = new ColorBlue();
             //act
             bool matches = white.Matches(blueColor);
             //assert
@@ -178,8 +178,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_White_Green()
         {
             //assign
-            IColor white = new MageKnightColorWhite();
-            IColor green = new MageKnightColorGreen();
+            IColor white = new ColorWhite();
+            IColor green = new ColorGreen();
             //act
             bool matches = white.Matches(green);
             //assert
@@ -189,8 +189,8 @@ namespace SoloTests.Models
         public void ShouldNotMatch_White_Red()
         {
             //assign
-            IColor redColor = new MageKnightColorRed();
-            IColor white = new MageKnightColorWhite();
+            IColor redColor = new ColorRed();
+            IColor white = new ColorWhite();
             //act
             bool matches = white.Matches(redColor);
             //assert

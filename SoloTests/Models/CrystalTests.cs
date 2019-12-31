@@ -13,7 +13,7 @@ namespace SoloTests.Models
         public void ShouldEquate()
         {
             //assign
-            IColor red = new MageKnightColorRed();
+            IColor red = new ColorRed();
             Crystal crystal1 = new Crystal(red);
             Crystal crystal2 = new Crystal(red);
 

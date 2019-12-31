@@ -5,7 +5,7 @@ namespace Solo.Models.Crystals
 {
     public class GreenCrystal:Crystal, ICrystal
     {
-        public GreenCrystal() : base(new MageKnightColorGreen())
+        public GreenCrystal() : base(new ColorGreen())
         {
         }
 
