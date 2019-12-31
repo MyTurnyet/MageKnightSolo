@@ -1,17 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Solo.Extensions;
 using Solo.Interfaces;
 using Solo.Models.Cards;
+using Solo.Wrappers;
 
 namespace Solo.Models
 {
     public class DummyDeck : IDeck
     {
+        private readonly IRandomizer _randomizer;
         private readonly CardList _currentDeck;
         private CardList _drawDeck;
 
-        public DummyDeck() : this(new CardList(new List<ICard>
+        public DummyDeck() : this(new RandomizerWrapper()) { }
+
+        public DummyDeck(IRandomizer randomizer) : this(randomizer, new CardList(new List<ICard>
         {
             new WhiteCard(), new RedCard(), new GreenCard(), new BlueCard(),
             new WhiteCard(), new RedCard(), new GreenCard(), new BlueCard(),
@@ -21,8 +26,9 @@ namespace Solo.Models
         {
         }
 
-        public DummyDeck(CardList currentDeck)
+        public DummyDeck(IRandomizer randomizer, CardList currentDeck)
         {
+            _randomizer = randomizer;
             _currentDeck = currentDeck;
             _drawDeck = currentDeck;
         }
@@ -37,9 +43,22 @@ namespace Solo.Models
 
         public IDeck Shuffle()
         {
-            Random random = new Random();
-            List<ICard> shuffledCards = _currentDeck.OrderBy(card => random.Next()).ToList();
-            return new DummyDeck(new CardList(shuffledCards));
+            CardList shuffledCards = new CardList();
+            shuffledCards.AddRange(Shuffle(_currentDeck, _randomizer));
+            return new DummyDeck(_randomizer, new CardList(shuffledCards));
+        }
+
+        private IEnumerable<ICard> Shuffle(List<ICard> source, IRandomizer rng)
+        {
+            ICard[] elements = source.ToArray();
+            for (int i = elements.Length - 1; i > 0; i--)
+            {
+                int swapIndex = rng.Next(i + 1);
+                yield return elements[swapIndex];
+                elements[swapIndex] = elements[i];
+            }
+
+            yield return elements[0];
         }
 
         public List<ICard> Draw(int drawNumber)
