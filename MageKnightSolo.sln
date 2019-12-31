@@ -1,8 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoloTests", "SoloTests\SoloTests.csproj", "{43F38FAC-6E24-4D5B-901B-0913C0553EEE}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoloTests", "SoloTests\SoloTests.csproj", "{43F38FAC-6E24-4D5B-901B-0913C0553EEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solo", "Solo\Solo.csproj", "{C31DF33D-3050-46DC-BD70-51C453F63E69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solo", "Solo\Solo.csproj", "{C31DF33D-3050-46DC-BD70-51C453F63E69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A486816-E681-4C66-B8FD-C42F0673BED2}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +27,11 @@ Global
 		{C31DF33D-3050-46DC-BD70-51C453F63E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C31DF33D-3050-46DC-BD70-51C453F63E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C31DF33D-3050-46DC-BD70-51C453F63E69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A263CA2B-7E2F-44A7-9E7B-0A45476A4EEB}
 	EndGlobalSection
 EndGlobal

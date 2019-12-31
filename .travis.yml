@@ -1,0 +1,7 @@
+language: csharp
+solution: MageKnightSolo.sln
+mono: none
+dotnet: 3.0
+script:
+ - dotnet restore
+ - dotnet test
