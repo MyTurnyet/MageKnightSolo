@@ -10,7 +10,9 @@ namespace Solo.Models.Cards
 
         public CardList(List<ICard> cards) : base(cards) { }
 
-        public override bool Equals(object obj) => obj is CardList list && Equals(list);
+        public bool Equals(ICardList other) => other is CardList list && Equals(list);
+
+        public override bool Equals(object obj) => obj is ICardList list && Equals(list);
 
         private bool Equals(CardList other)
         {

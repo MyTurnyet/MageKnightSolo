@@ -56,7 +56,6 @@ namespace SoloTests.Models
             //act
             //assert
             list.Should().Be(list2);
-
         }
     }
 }

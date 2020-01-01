@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Solo.Extensions;
 using Solo.Interfaces;
 using Solo.Models.Cards;
 using Solo.Wrappers;
@@ -10,13 +8,13 @@ namespace Solo.Models
 {
     public class DummyDeck : IDeck
     {
-        private readonly IRandomizer _randomizer;
+        private readonly IRandom _random;
         private readonly CardList _currentDeck;
         private CardList _drawDeck;
 
-        public DummyDeck() : this(new RandomizerWrapper()) { }
+        public DummyDeck() : this(new RandomWrapper()) { }
 
-        public DummyDeck(IRandomizer randomizer) : this(randomizer, new CardList(new List<ICard>
+        private DummyDeck(IRandom random) : this(random, new CardList(new List<ICard>
         {
             new WhiteCard(), new RedCard(), new GreenCard(), new BlueCard(),
             new WhiteCard(), new RedCard(), new GreenCard(), new BlueCard(),
@@ -26,9 +24,9 @@ namespace Solo.Models
         {
         }
 
-        public DummyDeck(IRandomizer randomizer, CardList currentDeck)
+        public DummyDeck(IRandom random, CardList currentDeck)
         {
-            _randomizer = randomizer;
+            _random = random;
             _currentDeck = currentDeck;
             _drawDeck = currentDeck;
         }
@@ -44,11 +42,11 @@ namespace Solo.Models
         public IDeck Shuffle()
         {
             CardList shuffledCards = new CardList();
-            shuffledCards.AddRange(Shuffle(_currentDeck, _randomizer));
-            return new DummyDeck(_randomizer, new CardList(shuffledCards));
+            shuffledCards.AddRange(Shuffle(_currentDeck, _random));
+            return new DummyDeck(_random, new CardList(shuffledCards));
         }
 
-        private IEnumerable<ICard> Shuffle(List<ICard> source, IRandomizer rng)
+        private IEnumerable<ICard> Shuffle(List<ICard> source, IRandom rng)
         {
             ICard[] elements = source.ToArray();
             for (int i = elements.Length - 1; i > 0; i--)
