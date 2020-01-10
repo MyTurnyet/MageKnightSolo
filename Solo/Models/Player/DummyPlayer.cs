@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Solo.Interfaces;
 
 namespace Solo.Models.Player
@@ -5,24 +7,18 @@ namespace Solo.Models.Player
     public class DummyPlayer : IDummyPlayer
     {
         private readonly IDeck _startingDummyDeck;
-        private readonly string[] _startingCrystals;
+        private readonly IEnumerable<ICrystal> _crystals;
 
-        public DummyPlayer(IDeck startingDummyDeck):this(startingDummyDeck, new string[]{}){}
+        public DummyPlayer(IDeck startingDummyDeck) : this(startingDummyDeck, new List<ICrystal>()){}
 
-        public DummyPlayer(IDeck startingDummyDeck, string[] startingCrystals)
+        public DummyPlayer(IDeck startingDummyDeck, IEnumerable<ICrystal> startingCrystals)
         {
             _startingDummyDeck = startingDummyDeck;
-            _startingCrystals = startingCrystals;
+            _crystals = startingCrystals;
         }
 
-        public int CardCount()
-        {
-            return _startingDummyDeck.CardCount();
-        }
+        public int CardCount() => _startingDummyDeck.CardCount();
 
-        public int CrystalCount()
-        {
-            return _startingCrystals.Length;
-        }
+        public int CrystalCount() => _crystals.Count();
     }
 }
